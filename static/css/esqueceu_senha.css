@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Cor de fundo */
+}
+
+header h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 350px; /* Largura máxima */
+    padding: 25px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    text-align: center;
+    color: #333; /* Cor do título */
+}
+
+.container label {
+    font-weight: bold;
+    color: #555; /* Cor dos rótulos */
+    display: block;
+    margin-top: 10px;
+}
+
+.container input[type="text"],
+.container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd; /* Borda dos campos de entrada */
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: #3b82f6; /* Cor do botão */
+    border: none;
+    border-radius: 4px;
+    color: white; /* Cor do texto do botão */
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #2563eb; /* Cor do botão ao passar o mouse */
+}
+
+.error {
+    color: #e74c3c; /* Cor de erro */
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.container p {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #555; /* Cor do texto dos parágrafos */
+}
+
+.container p a {
+    color: #3b82f6; /* Cor do link */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container p a:hover {
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+}

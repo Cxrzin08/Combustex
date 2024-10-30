@@ -1,6 +1,30 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_session import Session
+import pickle
+import os
 
 app = Flask(__name__)
+app.secret_key = 'sua_chave_secreta'
+app.config['SESSION_TYPE'] = 'filesystem'
+Session(app)
+
+# Caminho para o arquivo onde os dados de usuários serão armazenados
+USUARIOS_FILE = 'usuarios.pkl'
+
+# Função para carregar os usuários do arquivo
+def load_usuarios():
+    if os.path.exists(USUARIOS_FILE):
+        with open(USUARIOS_FILE, 'rb') as file:
+            return pickle.load(file)
+    return {}
+
+# Função para salvar os usuários no arquivo
+def save_usuarios(usuarios):
+    with open(USUARIOS_FILE, 'wb') as file:
+        pickle.dump(usuarios, file)
+
+# Carrega usuários ao iniciar o aplicativo
+usuarios = load_usuarios()
 
 class GasolinaAditivada:
     def __init__(self):
@@ -23,12 +47,58 @@ class GasolinaAditivada:
 
 gasolina_aditivada = GasolinaAditivada()
 
+@app.route('/cadastro', methods=['GET', 'POST'])
+def cadastro():
+    if request.method == 'POST':
+        usuario = request.form.get('usuario')
+        senha = request.form.get('senha')
+
+        if usuario in usuarios:
+            return render_template('cadastro.html', erro="Usuário já existe. Tente outro nome de usuário.")
+
+        usuarios[usuario] = senha
+        save_usuarios(usuarios)  # Salva os usuários após o cadastro
+        return redirect(url_for('login'))
+    return render_template('cadastro.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        usuario = request.form.get('usuario')
+        senha = request.form.get('senha')
+
+        if usuarios.get(usuario) == senha:
+            session['usuario'] = usuario
+            return redirect(url_for('index'))
+        else:
+            return render_template('login.html', erro="Credenciais inválidas. Tente novamente.")
+    return render_template('login.html')
+
+@app.route('/esqueceu_senha', methods=['GET', 'POST'])
+def esqueceu_senha():
+    if request.method == 'POST':
+        usuario = request.form.get('usuario')
+        nova_senha = request.form.get('nova_senha')
+
+        if usuario in usuarios:
+            usuarios[usuario] = nova_senha  # Atualiza a senha
+            save_usuarios(usuarios)  # Salva as alterações
+            return redirect(url_for('login'))
+        else:
+            return render_template('esqueceu_senha.html', erro="Usuário não encontrado.")
+    return render_template('esqueceu_senha.html')
+
 @app.route('/')
 def index():
+    if 'usuario' not in session:
+        return redirect(url_for('login'))
     return render_template('index.html')
 
 @app.route('/abastecer', methods=['POST'])
 def abastecer():
+    if 'usuario' not in session:
+        return redirect(url_for('login'))
+
     tipo = request.form.get('tipo')
     quantidade = request.form.get('quantidade')
     combustivel = request.form.get('combustivel')
@@ -65,6 +135,11 @@ def abastecer():
         resultado = "Tipo de abastecimento inválido."
 
     return render_template('resultado.html', resultado=resultado)
+
+@app.route('/logout')
+def logout():
+    session.pop('usuario', None)
+    return render_template('logout.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

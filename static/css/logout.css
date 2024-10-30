@@ -5,12 +5,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
 /* Estilos do corpo */
 body {
-    font-family: 'Arial', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Para ocupar toda a altura da tela */
     background: linear-gradient(to right, #e9ecef, #f8f9fa);
+    flex-direction: column; /* Para garantir que os elementos sejam empilhados verticalmente */
 }
 
 /* Estilos do cabeçalho */
@@ -19,31 +24,13 @@ header {
     color: white;
     padding: 20px;
     text-align: center;
-    position: relative; /* Adicione esta linha */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilos do link de logout */
-.logout {
-    position: absolute; /* Altera a posição para absoluta */
-    right: 20px; /* Alinha à direita */
-    top: 15px; /* Alinha ao topo */
-    padding: 10px 15px;
-    background-color: #dc3545;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.logout:hover {
-    background-color: #c82333;
 }
 
 /* Estilos do contêiner principal */
 .container {
-    max-width: 500px;
-    margin: 20px auto;
+    width: 100%; /* Adiciona largura total */
+    max-width: 500px; /* Largura máxima do contêiner */
     padding: 20px;
     background: white;
     border-radius: 10px;
@@ -68,6 +55,22 @@ h1 {
 p {
     font-size: 18px;
     margin-bottom: 15px;
+}
+
+/* Estilos do link de logout */
+.logout {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+    background-color: #c82333;
 }
 
 /* Estilos do formulário */

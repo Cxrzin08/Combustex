@@ -1,0 +1,96 @@
+/* Estilo base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #eef2f7;
+    flex-direction: column; /* Assegura que os elementos sejam empilhados verticalmente */
+}
+
+/* Estilo do container de cadastro */
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Remover o h1 do container */
+header h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center; /* Centraliza o texto no cabeçalho */
+}
+
+/* As propriedades do container podem ficar assim, sem h1 */
+.container label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.container input[type="text"],
+.container input[type="password"],
+.container input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: #10b981;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #059669;
+}
+
+.container p {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.container p a {
+    color: #10b981;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container p a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: center;
+}
