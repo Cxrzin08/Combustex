@@ -4,7 +4,7 @@ import pickle
 import os
 
 app = Flask(__name__)
-app.secret_key = 'sua_chave_secreta'
+app.secret_key = 'Combustex_posto'  # Chave secreta definida diretamente
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
