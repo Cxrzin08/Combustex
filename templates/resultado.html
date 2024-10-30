@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Abastecimento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Resultado do Abastecimento</h1>
+    </header>
+    <div class="container">
+        <div class="resultado">
+            <p>{{ resultado }}</p>
+        </div>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/empresa.png') }}" alt="Logo" class="logo">
+        </div>
+    </div>
+</body>
+</html>
