@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abastecimento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menucombustivel.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Abastecimento de Combustível</h1>
+        <a href="{{ url_for('logout') }}" class="logout">Sair</a>
+    </header>
+    <div class="container">
+        <p>Bem-vindo, {{ session['usuario'] }}!</p>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+        <form action="{{ url_for('abastecer') }}" method="POST">
+            <label for="combustivel">Tipo de Combustível:</label>
+            <select name="combustivel" id="combustivel" required>
+                <option value="etanol">Etanol R$ 3,50</option>
+                <option value="gasolina">Gasolina R$ 5,00</option>
+                <option value="gasolina aditivada">Gasolina Aditivada R$ 5,80</option>
+                <option value="diesel">Diesel R$ 4,00</option>
+                <option value="gnv">GNV R$ 3,00</option>
+            </select>
+            <label for="tipo">Tipo de Abastecimento:</label>
+            <select name="tipo" id="tipo" required>
+                <option value="litros">Litros</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+            <label for="quantidade">Quantidade:</label>
+            <p style="color: #aaa; font-size: 14px;">Digite a quantidade desejada em litros ou valor em dinheiro.</p>
+            <input type="text" name="quantidade" id="quantidade" placeholder="Ex: 10 ou R$ 50" required>
+            <button type="submit">Abastecer</button>
+        </form>
+    </div>
+</body>
+</html>

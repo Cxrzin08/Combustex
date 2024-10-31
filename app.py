@@ -92,7 +92,7 @@ def esqueceu_senha():
 def index():
     if 'usuario' not in session:
         return redirect(url_for('login'))
-    return render_template('index.html')
+    return render_template('menucombustivel.html')
 
 @app.route('/abastecer', methods=['POST'])
 def abastecer():
@@ -106,7 +106,7 @@ def abastecer():
     try:
         quantidade = float(quantidade.replace(',', '.'))
     except ValueError:
-        return render_template('index.html', resultado="Quantidade inválida. Use números.")
+        return render_template('menucombustivel.html', resultado="Quantidade inválida. Use números.")
 
     preco_por_litro = {
         'etanol': 3.50,
@@ -117,7 +117,7 @@ def abastecer():
     }
 
     if combustivel not in preco_por_litro:
-        return render_template('index.html', resultado="Combustível inválido. Por favor, selecione um válido.")
+        return render_template('menucombustivel.html', resultado="Combustível inválido. Por favor, selecione um válido.")
 
     if tipo == 'litros':
         if combustivel == 'gasolina aditivada':
