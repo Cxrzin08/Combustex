@@ -4,26 +4,22 @@ import pickle
 import os
 
 app = Flask(__name__)
-app.secret_key = 'Combustex_posto'  # Chave secreta definida diretamente
+app.secret_key = 'Combustex_posto'
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
-# Caminho para o arquivo onde os dados de usuários serão armazenados
 USUARIOS_FILE = 'usuarios.pkl'
 
-# Função para carregar os usuários do arquivo
 def load_usuarios():
     if os.path.exists(USUARIOS_FILE):
         with open(USUARIOS_FILE, 'rb') as file:
             return pickle.load(file)
     return {}
 
-# Função para salvar os usuários no arquivo
 def save_usuarios(usuarios):
     with open(USUARIOS_FILE, 'wb') as file:
         pickle.dump(usuarios, file)
 
-# Carrega usuários ao iniciar o aplicativo
 usuarios = load_usuarios()
 
 class GasolinaAditivada:
@@ -57,7 +53,7 @@ def cadastro():
             return render_template('cadastro.html', erro="Usuário já existe. Tente outro nome de usuário.")
 
         usuarios[usuario] = senha
-        save_usuarios(usuarios)  # Salva os usuários após o cadastro
+        save_usuarios(usuarios)
         return redirect(url_for('login'))
     return render_template('cadastro.html')
 
@@ -69,7 +65,7 @@ def login():
 
         if usuarios.get(usuario) == senha:
             session['usuario'] = usuario
-            return redirect(url_for('index'))
+            return redirect(url_for('menucombustivel'))  # Redireciona para o menu de combustíveis
         else:
             return render_template('login.html', erro="Credenciais inválidas. Tente novamente.")
     return render_template('login.html')
@@ -81,8 +77,8 @@ def esqueceu_senha():
         nova_senha = request.form.get('nova_senha')
 
         if usuario in usuarios:
-            usuarios[usuario] = nova_senha  # Atualiza a senha
-            save_usuarios(usuarios)  # Salva as alterações
+            usuarios[usuario] = nova_senha
+            save_usuarios(usuarios)
             return redirect(url_for('login'))
         else:
             return render_template('esqueceu_senha.html', erro="Usuário não encontrado.")
@@ -90,9 +86,13 @@ def esqueceu_senha():
 
 @app.route('/')
 def index():
+    return render_template('index.html')
+
+@app.route('/menucombustivel')
+def menucombustivel():
     if 'usuario' not in session:
         return redirect(url_for('login'))
-    return render_template('menucombustivel.html')
+    return render_template('menucombustivel.html')  # Renderiza a página de menu de combustíveis
 
 @app.route('/abastecer', methods=['POST'])
 def abastecer():
