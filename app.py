@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_session import Session
+import pyqrcode
 import pickle
 import os
 
@@ -65,7 +66,7 @@ def login():
 
         if usuarios.get(usuario) == senha:
             session['usuario'] = usuario
-            return redirect(url_for('menucombustivel'))  # Redireciona para o menu de combustíveis
+            return redirect(url_for('menucombustivel'))
         else:
             return render_template('login.html', erro="Credenciais inválidas. Tente novamente.")
     return render_template('login.html')
@@ -92,7 +93,7 @@ def index():
 def menucombustivel():
     if 'usuario' not in session:
         return redirect(url_for('login'))
-    return render_template('menucombustivel.html')  # Renderiza a página de menu de combustíveis
+    return render_template('menucombustivel.html')
 
 @app.route('/abastecer', methods=['POST'])
 def abastecer():
@@ -134,7 +135,13 @@ def abastecer():
     else:
         resultado = "Tipo de abastecimento inválido."
 
-    return render_template('resultado.html', resultado=resultado)
+    valor_a_pagar = quantidade * preco_por_litro[combustivel] if tipo == 'litros' else quantidade
+    qr_code_data = f"Pagamento de R$ {valor_a_pagar:.2f} para {combustivel}\n19983824281"
+    qr_code = pyqrcode.create(qr_code_data)
+    qr_code_file = f"static/qrcodes/qrcode_{session['usuario']}.png"
+    qr_code.png(qr_code_file, scale=6)
+
+    return render_template('resultado.html', resultado=resultado, qr_code_file=f'qrcodes/qrcode_{session["usuario"]}.png')
 
 @app.route('/logout')
 def logout():

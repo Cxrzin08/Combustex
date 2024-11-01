@@ -15,8 +15,27 @@
             <p>{{ resultado }}</p>
         </div>
         <div class="image-container">
-            <img src="{{ url_for('static', filename='images/empresa.png') }}" alt="Logo" class="logo">
+            <img src="{{ url_for('static', filename='images/empresa.png') }}" alt="Logo" class="logo">    
         </div>
+        <h2>Chave Pix</h2>
+        <div class="resultado">
+            <p>Chave: 19983824281</p>
+        </div>
+        <div class="qr-code">
+            <img src="static/qrcodes/qrcode_teste.png" alt="QR Code" />
+        </div>
+        <h2>Copia e Cola</h2>
+        <input type="text" value="19983824281" id="pixKey" readonly>
+        <button onclick="copyToClipboard()">Copiar</button>
     </div>
+
+    <script>
+        function copyToClipboard() {
+            var copyText = document.getElementById("pixKey");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Chave Pix copiada: " + copyText.value);
+        }
+    </script>
 </body>
 </html>
