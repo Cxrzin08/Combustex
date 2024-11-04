@@ -1,6 +1,12 @@
-#!C:\Users\felip\Downloads\Combustex-5\venv\Scripts\python.exe
+#!C:\Users\felip\Combustex-1\venv\Scripts\python.exe
 # pripnglsch
 # PNG List Chunks
+
+from __future__ import print_function
+
+import argparse
+import binascii
+import sys
 
 import png
 
@@ -10,23 +16,24 @@ def list_chunks(out, inp):
     for t, v in r.chunks():
         add = ""
         if len(v) <= 28:
-            add = " " + v.hex()
+            add = " " + hex(v)
         else:
-            add = " " + v[:26].hex() + "..."
+            add = " " + hex(v[:26]) + "..."
         t = t.decode("ascii")
         print("%s %10d%s" % (t, len(v), add), file=out)
 
 
-def main(argv=None):
-    import argparse
-    import sys
+def hex(bs):
+    """Convert the bytes `bs` to a hex string."""
+    return binascii.hexlify(bs).decode("ascii")
 
+
+def main(argv=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "input", nargs="?", default="-", type=png.cli_open, metavar="PNG"
-    )
+    parser.add_argument("png", nargs="?", default="-")
     args = parser.parse_args()
-    return list_chunks(sys.stdout, args.input)
+    inp = png.cli_open(args.png)
+    return list_chunks(sys.stdout, inp)
 
 
 if __name__ == "__main__":

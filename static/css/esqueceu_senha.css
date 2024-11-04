@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -11,67 +11,117 @@ body {
     justify-content: center;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f4f4f4; /* Cor de fundo */
+    background-color: #f4f4f4;
 }
 
 header h1 {
     font-size: 2em;
-    color: #333;
+    color: #4B9CD3; /* Cor do título atualizada */
     margin-bottom: 20px;
     text-align: center;
 }
 
 .container {
     width: 100%;
-    max-width: 350px; /* Largura máxima */
-    padding: 25px;
-    border-radius: 8px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 500px; /* Aumentando a largura máxima */
+    min-height: 400px; /* Definindo uma altura mínima */
+    padding: 30px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 h1 {
+    font-size: 2em; /* Tamanho do título reduzido */
+    color: #4B9CD3; /* Cor do título atualizada */
+    margin: 0;
     text-align: center;
-    color: #333; /* Cor do título */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    animation: shine 2s infinite; /* Adiciona a animação de brilho ao título */
+}
+
+/* Animação de brilho para o título */
+@keyframes shine {
+    0% {
+        text-shadow: 0 0 3px rgba(75, 156, 211, 0.5), 0 0 5px rgba(75, 156, 211, 0.3), 0 0 10px rgba(75, 156, 211, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 5px rgba(75, 156, 211, 0.8), 0 0 15px rgba(75, 156, 211, 0.6), 0 0 20px rgba(75, 156, 211, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 3px rgba(75, 156, 211, 0.5), 0 0 5px rgba(75, 156, 211, 0.3), 0 0 10px rgba(75, 156, 211, 0.2);
+    }
 }
 
 .container label {
     font-weight: bold;
-    color: #555; /* Cor dos rótulos */
+    color: #4B9CD3; /* Cor dos rótulos atualizada */
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .container input[type="text"],
 .container input[type="password"] {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd; /* Borda dos campos de entrada */
-    border-radius: 4px;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
     font-size: 1em;
+    transition: border 0.3s;
+}
+
+.container input[type="text"]:focus,
+.container input[type="password"]:focus {
+    border-color: #4B9CD3; /* Cor da borda atualizada */
+    outline: none;
+    box-shadow: 0 0 5px rgba(75, 156, 211, 0.2);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 button[type="submit"] {
-    margin-top: 20px;
-    padding: 10px;
+    margin-top: 25px;
+    padding: 12px;
     width: 100%;
-    background-color: #3b82f6; /* Cor do botão */
+    background-color: #4B9CD3; /* Cor do botão */
     border: none;
-    border-radius: 4px;
-    color: white; /* Cor do texto do botão */
-    font-size: 1.1em;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.2em;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    box-shadow: 0 4px 10px rgba(75, 156, 211, 0.3);
+    animation: pulse 1.5s infinite;
 }
 
 button[type="submit"]:hover {
-    background-color: #2563eb; /* Cor do botão ao passar o mouse */
+    background-color: #3a8bb8; /* Cor do botão ao passar o mouse */
+    transform: scale(1.05);
 }
 
 .error {
-    color: #e74c3c; /* Cor de erro */
+    color: #e74c3c;
     font-size: 0.9em;
     margin-top: 10px;
     text-align: center;
@@ -80,15 +130,15 @@ button[type="submit"]:hover {
 .container p {
     margin-top: 15px;
     font-size: 0.9em;
-    color: #555; /* Cor do texto dos parágrafos */
+    color: #555; /* Mantive essa cor como um cinza mais neutro */
 }
 
 .container p a {
-    color: #3b82f6; /* Cor do link */
+    color: #4B9CD3; /* Cor dos links atualizada */
     text-decoration: none;
     font-weight: bold;
 }
 
 .container p a:hover {
-    text-decoration: underline; /* Sublinhado ao passar o mouse */
+    text-decoration: underline;
 }

@@ -1,16 +1,29 @@
 /* styles.css */
 
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body */
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to right, #e9ecef, #f8f9fa);
+    animation: backgroundAnimation 15s ease infinite; /* Animação de fundo */
 }
 
+/* Animação de fundo */
+@keyframes backgroundAnimation {
+    0% { background: linear-gradient(to right, #e9ecef, #f8f9fa); }
+    25% { background: linear-gradient(to right, #f8f9fa, #e9ecef); }
+    50% { background: linear-gradient(to right, #e9ecef, #f8f9fa); }
+    75% { background: linear-gradient(to right, #f8f9fa, #e9ecef); }
+    100% { background: linear-gradient(to right, #e9ecef, #f8f9fa); }
+}
+
+/* Header */
 header {
     background-color: #007BFF;
     color: white;
@@ -21,6 +34,7 @@ header {
     border-bottom: 5px solid #0056b3;
 }
 
+/* Logout button */
 .logout {
     position: absolute;
     right: 20px;
@@ -31,6 +45,7 @@ header {
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 1s ease; /* Animação de entrada */
 }
 
 .logout:hover {
@@ -38,6 +53,7 @@ header {
     transform: scale(1.05);
 }
 
+/* Container */
 .container {
     max-width: 500px;
     margin: 20px auto;
@@ -47,30 +63,86 @@ header {
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease;
+    opacity: 0; /* Inicialmente invisível */
+    animation: slideIn 1s forwards; /* Animação de entrada */
+}
+
+/* Animação de slideIn */
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .container:hover {
     transform: translateY(-5px);
 }
 
+/* Logo */
 .logo {
     max-width: 150px;
     margin: 20px 0;
+    animation: bounce 1.5s infinite; /* Animação de pulsar */
 }
 
+/* Animação de bounce */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Title */
 h1 {
     margin: 0;
     font-size: 24px;
     letter-spacing: 1px;
     color: #ffffff;
+    animation: textGlow 1s ease-in-out infinite alternate; /* Animação de brilho */
 }
 
+/* Animação de textGlow */
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+}
+
+/* Paragraph */
 p {
     font-size: 18px;
     margin-bottom: 15px;
     color: #000000;
+    animation: fadeInUp 0.5s ease-in-out; /* Animação de subida */
 }
 
+/* Animação de fadeInUp */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Form */
 form {
     margin-top: 20px;
     display: flex;
@@ -78,6 +150,7 @@ form {
     align-items: center;
 }
 
+/* Labels */
 label {
     display: block;
     font-weight: bold;
@@ -85,8 +158,10 @@ label {
     width: 100%;
     text-align: left;
     margin-bottom: 5px;
+    animation: fadeIn 0.5s ease; /* Animação de entrada */
 }
 
+/* Inputs and Selects */
 input, select {
     width: 100%;
     max-width: 450px;
@@ -95,14 +170,26 @@ input, select {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, transform 0.3s ease; /* Adiciona transição suave */
 }
 
 input:focus, select:focus {
     border-color: #007BFF;
     outline: none;
+    animation: focusEffect 0.3s ease; /* Efeito de foco */
 }
 
+/* Efeito de foco */
+@keyframes focusEffect {
+    from {
+        box-shadow: 0 0 0 rgba(0, 123, 255, 0);
+    }
+    to {
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+}
+
+/* Buttons */
 button {
     background-color: #007BFF;
     color: white;
@@ -114,6 +201,19 @@ button {
     transition: background-color 0.3s ease, transform 0.3s ease;
     width: 100%;
     max-width: 450px;
+    animation: popIn 0.5s ease; /* Animação de entrada */
+}
+
+/* Animação de popIn */
+@keyframes popIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 button:hover {
@@ -121,6 +221,7 @@ button:hover {
     transform: scale(1.05);
 }
 
+/* Result Area */
 .resultado {
     padding: 10px;
     border: 1px solid #007BFF;
@@ -131,8 +232,20 @@ button:hover {
     text-align: center;
     max-width: 450px;
     margin: 0 auto;
+    animation: fadeIn 0.5s ease; /* Animação de entrada */
 }
 
+/* Animação de fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Image Placeholder */
 .image-placeholder {
     height: 150px;
     background-color: #e0e0e0;
@@ -143,15 +256,19 @@ button:hover {
     color: #666;
     border-radius: 5px;
     margin-top: 15px;
+    animation: fadeIn 1s ease; /* Animação de entrada */
 }
 
+/* Footer */
 .footer {
     text-align: center;
     margin-top: 20px;
     font-size: 12px;
     color: #666;
+    animation: fadeIn 1s ease; /* Animação de entrada */
 }
 
+/* Media Queries */
 @media (max-width: 600px) {
     .container {
         padding: 15px;
@@ -163,5 +280,338 @@ button:hover {
 
     button {
         font-size: 14px;
+    }
+}
+
+/* Extra Styles for Elements */
+input, select {
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+
+input:hover, select:hover {
+    border-color: #007BFF;
+}
+
+/* Button Effects */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Adding additional animations for inputs */
+input {
+    animation: shake 0.5s ease; /* Animação de tremor */
+}
+
+/* Animação de shake */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Animated Background for Buttons */
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease, background 0.5s ease;
+    width: 100%;
+    max-width: 450px;
+    animation: popIn 0.5s ease; /* Animação de entrada */
+}
+
+/* Animação de popIn */
+@keyframes popIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Result Area */
+.resultado {
+    padding: 10px;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    background-color: #cce5ff;
+    color: #004085;
+    font-size: 16px;
+    text-align: center;
+    max-width: 450px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease; /* Animação de entrada */
+}
+
+/* Animação de fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Image Placeholder */
+.image-placeholder {
+    height: 150px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #666;
+    border-radius: 5px;
+    margin-top: 15px;
+    animation: fadeIn 1s ease; /* Animação de entrada */
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #666;
+    animation: fadeIn 1s ease; /* Animação de entrada */
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+/* Extra Styles for Elements */
+input, select {
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+
+input:hover, select:hover {
+    border-color: #007BFF;
+}
+
+/* Button Effects */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Adding additional animations for inputs */
+input {
+    animation: shake 0.5s ease; /* Animação de tremor */
+}
+
+/* Animação de shake */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Pulsating Effect for Header */
+header {
+    animation: pulse 2s infinite; /* Animação de pulsação */
+}
+
+/* Animação de pulsação */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        background-color: #007BFF;
+    }
+    50% {
+        transform: scale(1.02);
+        background-color: #0056b3;
+    }
+}
+
+/* Scale Effect on Hover for Links */
+a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+a:hover {
+    transform: scale(1.1);
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position the tooltip above the text */
+    left: 50%;
+    margin-left: -60px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Shadow Effect on Container */
+.container {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Glowing Effect for Inputs */
+input:focus {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Rotate Animation for Icons */
+.icon {
+    display: inline-block;
+    animation: rotate 2s infinite linear;
+}
+
+/* Animação de rotação */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Card Styles */
+.card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 15px 0;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Flexbox for Layout */
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.flex-item {
+    flex: 1 1 30%; /* Flex item */
+    margin: 10px;
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.flex-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Alert Styles */
+.alert {
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease; /* Animação de entrada */
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* Animations for Images */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    animation: fadeIn 1s ease; /* Animação de entrada */
+}
+
+/* Navbar Links */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item:hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #007BFF;
+    bottom: -5px;
+    left: 0;
+    animation: slide 0.3s forwards; /* Animação de deslizar */
+}
+
+/* Animação de deslizar */
+@keyframes slide {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
     }
 }

@@ -1,8 +1,8 @@
-#!C:\Users\felip\Downloads\Combustex-5\venv\Scripts\python.exe
+#!C:\Users\felip\Combustex-1\venv\Scripts\python.exe
 # pripalpng
+# Convert to Palette PNG
 
-
-"""Convert to Palette PNG (without changing colours)"""
+from __future__ import print_function
 
 import argparse
 import collections
@@ -10,6 +10,9 @@ import collections
 # https://docs.python.org/2.7/library/io.html
 import io
 import string
+import struct
+import sys
+import warnings
 import zlib
 
 # Local module.
@@ -31,7 +34,7 @@ def make_inverse_palette(rows, channels):
     return palette
 
 
-def palette_convert(out, inp, palette_file):
+def palette_convert(inp, out, palette_file):
     """
     Convert PNG image in `inp` to use a palette, colour type 3,
     and write converted image to `out`.
@@ -88,7 +91,6 @@ def asRGBorA8(reader):
 
 
 def main(argv=None):
-    import sys
     import re
 
     if argv is None:
@@ -96,15 +98,25 @@ def main(argv=None):
 
     argv = argv[1:]
 
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--palette", type=png.cli_open)
-    parser.add_argument(
-        "input", nargs="?", default="-", type=png.cli_open, metavar="PNG"
-    )
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--palette", type=argparse.FileType("rb"))
+    parser.add_argument("input", type=argparse.FileType("rb"))
 
     args = parser.parse_args(argv)
 
-    palette_convert(png.binary_stdout(), args.input, args.palette)
+    # Fix for binary stdin on Python 3
+    try:
+        args.input = args.input.buffer
+    except AttributeError:
+        pass
+
+    # Fix for binary stdin on Python 3
+    try:
+        args.palette = args.palette.buffer
+    except AttributeError:
+        pass
+
+    palette_convert(args.input, png.binary_stdout(), args.palette)
 
 
 if __name__ == "__main__":

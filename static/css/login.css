@@ -12,10 +12,16 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background: linear-gradient(135deg, #e0e7f1, #cfd8e7);
+    animation: fadeIn 1s ease;
 }
 
-header h1 {
-    font-size: 2.5em;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+h1 {
+    font-size: 2em; /* Título menor */
     color: #3b82f6;
     margin: 0;
     text-align: center;
@@ -24,17 +30,32 @@ header h1 {
     letter-spacing: 1px;
     padding: 10px 0;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: shine 1.5s infinite; /* Adicionando animação ao título */
+}
+
+@keyframes shine {
+    0% {
+        text-shadow: 0 0 5px rgba(59, 130, 246, 0.3), 0 0 10px rgba(59, 130, 246, 0.3), 0 0 15px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 7px rgba(59, 130, 246, 0.7), 0 0 30px rgba(59, 130, 246, 0.7), 0 0 40px rgba(59, 130, 246, 0.7);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(59, 130, 246, 0.3), 0 0 10px rgba(59, 130, 246, 0.3), 0 0 15px rgba(59, 130, 246, 0.3);
+    }
 }
 
 .container {
     width: 100%;
-    max-width: 380px;
+    max-width: 500px; /* Aumentando a largura máxima */
+    min-height: 400px; /* Definindo uma altura mínima */
     padding: 30px;
     border-radius: 12px;
     background: #ffffff;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .container:hover {
     transform: translateY(-5px);
@@ -66,6 +87,15 @@ header h1 {
     box-shadow: 0 0 5px rgba(59, 130, 246, 0.2);
 }
 
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
 button[type="submit"] {
     margin-top: 25px;
     padding: 12px;
@@ -79,11 +109,11 @@ button[type="submit"] {
     cursor: pointer;
     transition: background 0.3s, transform 0.2s ease-in-out;
     box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+    animation: pulse 1.5s infinite; /* Adicionando a animação de pulsação */
 }
 
 button[type="submit"]:hover {
     background: linear-gradient(135deg, #3b82f6, #2563eb);
-    transform: scale(1.05);
 }
 
 .container p {
@@ -112,7 +142,6 @@ button[type="submit"]:hover {
     text-align: center;
 }
 
-/* Estilo específico para a página de redefinição de senha */
 .container form {
     display: flex;
     flex-direction: column;

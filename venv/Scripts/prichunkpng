@@ -1,20 +1,18 @@
-#!C:\Users\felip\Downloads\Combustex-5\venv\Scripts\python.exe
-# prichunkpng
-# Chunk editing tool.
+#!C:\Users\felip\Combustex-1\venv\Scripts\python.exe
+# pngchunk
+# Chunk editing/extraction tool.
 
-"""
-Make a new PNG by adding, delete, or replacing particular chunks.
-"""
+from __future__ import print_function
 
 import argparse
 import collections
 
 # https://docs.python.org/2.7/library/io.html
 import io
-import re
 import string
 import struct
 import sys
+import warnings
 import zlib
 
 # Local module.
@@ -22,10 +20,6 @@ import png
 
 
 Chunk = collections.namedtuple("Chunk", "type content")
-
-
-class ArgumentError(Exception):
-    """A user problem with the command arguments."""
 
 
 def process(out, args):
@@ -71,31 +65,6 @@ def process(out, args):
         v = struct.pack(">%dH" % len(args.background), *args.background)
         bs = io.BytesIO(v)
         args.chunk.insert(0, Chunk(b"bKGD", bs))
-    if args.physical:
-        # https://www.w3.org/TR/PNG/#11pHYs
-        numbers = re.findall(r"(\d+\.?\d*)", args.physical)
-        if len(numbers) not in {1, 2}:
-            raise ArgumentError("One or two numbers are required for --physical")
-        xppu = float(numbers[0])
-        if len(numbers) == 1:
-            yppu = xppu
-        else:
-            yppu = float(numbers[1])
-
-        unit_spec = 0
-        if args.physical.endswith("dpi"):
-            # Convert from DPI to Pixels Per Metre
-            # 1 inch is 0.0254 metres
-            l = 0.0254
-            xppu /= l
-            yppu /= l
-            unit_spec = 1
-        elif args.physical.endswith("ppm"):
-            unit_spec = 1
-
-        v = struct.pack("!LLB", round(xppu), round(yppu), unit_spec)
-        bs = io.BytesIO(v)
-        args.chunk.insert(0, Chunk(b"pHYs", bs))
 
     # Create:
     # - a set of chunks to delete
@@ -103,9 +72,8 @@ def process(out, args):
     # - a list of chunk to add
 
     delete = set(args.delete)
-    # The set of chunks to replace are those where the specification says
-    # that there should be at most one of them.
-    replacing = set([b"gAMA", b"pHYs", b"sBIT", b"PLTE", b"tRNS", b"sPLT", b"IHDR"])
+    # Generally, there should be at most one of the 'replacing' chunks.
+    replacing = set([b"gAMA", b"sBIT", b"PLTE", b"tRNS", b"sPLT", b"IHDR"])
     replace = dict()
     add = []
 
@@ -165,7 +133,7 @@ def chunk_name(s):
 def comma_list(s):
     """
     Convert s, a command separated list of whole numbers,
-    into a sequence of int.
+    into a list of int.
     """
 
     return tuple(int(v) for v in s.split(","))
@@ -196,37 +164,18 @@ def hex_color(s):
 
 
 def main(argv=None):
+    import re
+
     if argv is None:
         argv = sys.argv
 
     argv = argv[1:]
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--gamma", type=float, help="Gamma value for gAMA chunk")
-    parser.add_argument(
-        "--physical",
-        type=str,
-        metavar="x[,y][dpi|ppm]",
-        help="specify intended pixel size or aspect ratio",
-    )
-    parser.add_argument(
-        "--sigbit",
-        type=comma_list,
-        metavar="D[,D[,D[,D]]]",
-        help="Number of significant bits in each channel",
-    )
-    parser.add_argument(
-        "--iccprofile",
-        metavar="file.iccp",
-        type=argparse.FileType("rb"),
-        help="add an ICC Profile from a file",
-    )
-    parser.add_argument(
-        "--transparent",
-        type=hex_color,
-        metavar="#RRGGBB",
-        help="Specify the colour that is transparent (tRNS chunk)",
-    )
+    parser.add_argument("--gamma", type=float)
+    parser.add_argument("--sigbit", type=comma_list, metavar="D[,D[,D[,D]]]")
+    parser.add_argument("--iccprofile", type=argparse.FileType("rb"))
+    parser.add_argument("--transparent", type=hex_color, metavar="#RRGGBB")
     parser.add_argument(
         "--background",
         type=hex_color,
@@ -248,11 +197,15 @@ def main(argv=None):
         type=str,
         help="insert chunk, taking contents from file",
     )
-    parser.add_argument(
-        "input", nargs="?", default="-", type=png.cli_open, metavar="PNG"
-    )
+    parser.add_argument("input", type=argparse.FileType("rb"))
 
     args = parser.parse_args(argv)
+
+    # Fix for binary stdin on Python 3
+    try:
+        args.input = args.input.buffer
+    except AttributeError:
+        pass
 
     # Reprocess the chunk arguments, converting each pair into a Chunk.
     args.chunk = [

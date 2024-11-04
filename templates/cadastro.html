@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
 </head>
 <body>
-    <header>
-        <h1>Cadastro - Abastecimento</h1>
-    </header>
     <div class="container">
+        <h1>Realize Seu Cadastro</h1>
         <form action="/cadastro" method="POST">
             <label for="usuario">Usuário:</label>
             <input type="text" name="usuario" id="usuario" required>
@@ -23,7 +21,7 @@
         {% if erro %}
             <p class="error">{{ erro }}</p>
         {% endif %}
-        <p>Já tem uma conta? <a href="{{ url_for('login') }}">Faça login</a>.</p>
+        <p>Já tem uma conta? <a href="{{ url_for('login') }}">Realize login</a>.</p>
     </div>
 </body>
 </html>

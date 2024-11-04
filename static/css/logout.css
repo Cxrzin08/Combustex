@@ -16,6 +16,17 @@ body {
     min-height: 100vh; /* Para ocupar toda a altura da tela */
     background: linear-gradient(to right, #e9ecef, #f8f9fa);
     flex-direction: column; /* Para garantir que os elementos sejam empilhados verticalmente */
+    animation: fadeIn 1s ease-in-out; /* Animação de aparecimento */
+}
+
+/* Animação de fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Estilos do cabeçalho */
@@ -25,6 +36,19 @@ header {
     padding: 20px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.5s ease-in-out; /* Animação de descida */
+}
+
+/* Animação de slideDown */
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Estilos do contêiner principal */
@@ -36,12 +60,32 @@ header {
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transform: scale(1); /* Para efeito de hover */
+    transition: transform 0.3s ease; /* Transição suave */
+}
+
+.container:hover {
+    transform: scale(1.02); /* Efeito de aumento no hover */
 }
 
 /* Estilos do logo */
 .logo {
     max-width: 150px;
     margin: 20px 0;
+    animation: bounce 1s infinite; /* Animação de pulsar */
+}
+
+/* Animação de bounce */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
 /* Estilos do título */
@@ -49,12 +93,38 @@ h1 {
     margin: 0;
     font-size: 24px;
     letter-spacing: 1px;
+    color: black; /* Letra preta */
+    animation: textGlow 1s ease-in-out infinite alternate; /* Animação de brilho */
+}
+
+/* Animação de textGlow */
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
 }
 
 /* Estilos do parágrafo */
 p {
     font-size: 18px;
     margin-bottom: 15px;
+    color: black; /* Letra preta */
+    animation: fadeInUp 1s ease-in-out; /* Animação de subida */
+}
+
+/* Animação de fadeInUp */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Estilos do link de logout */
@@ -71,6 +141,20 @@ p {
 
 .logout:hover {
     background-color: #c82333;
+    animation: pulse 0.5s infinite; /* Animação de pulsar */
+}
+
+/* Animação de pulse */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* Estilos do formulário */
@@ -85,7 +169,7 @@ form {
 label {
     display: block;
     font-weight: bold;
-    color: #333;
+    color: black; /* Letra preta */
     width: 100%;
     text-align: left;
     margin-bottom: 5px;
@@ -117,13 +201,14 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Adiciona efeito de transformação */
     width: 100%;
     max-width: 450px;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: scale(1.05); /* Efeito de aumento no hover */
 }
 
 /* Estilos de resultado */
@@ -150,6 +235,7 @@ button:hover {
     color: #666;
     border-radius: 5px;
     margin-top: 15px;
+    animation: fadeIn 2s ease; /* Animação de aparecimento */
 }
 
 /* Estilos do rodapé */
