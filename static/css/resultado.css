@@ -22,7 +22,7 @@ header {
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    animation: slideIn 0.5s ease-in; /* Animação de deslizamento */
+    animation: slideIn 0.5s ease-in;
 }
 
 h1 {
@@ -30,7 +30,7 @@ h1 {
     font-size: 2.5em;
     color: #ffffff;
     text-shadow: 0 0 5px #ffffff; /* Efeito de brilho */
-    animation: fadeIn 1.5s ease-in-out; /* Animação suave */
+    animation: fadeIn 1.5s
 }
 
 h2 {
@@ -38,7 +38,7 @@ h2 {
     color: #0056b3;
     margin-top: 20px;
     text-shadow: 0 0 3px #0056b3; /* Efeito de brilho suave */
-    animation: fadeIn 2s ease-in-out; /* Animação suave */
+    animation: fadeIn 2s ease-in-out;
 }
 
 .resultado {
@@ -49,11 +49,11 @@ h2 {
     border: 1px solid #0056b3;
     border-radius: 5px;
     background-color: #e3f2fd;
-    transition: transform 0.2s ease; /* Transição para animação de hover */
+    transition: transform 0.2s ease;
 }
 
 .resultado:hover {
-    transform: scale(1.01); /* Efeito de crescimento muito sutil ao passar o mouse */
+    transform: scale(1.01);
 }
 
 .image-container {
@@ -64,18 +64,18 @@ h2 {
     border-radius: 5px;
     background-color: #f0f0f0;
     padding: 20px;
-    margin-bottom: 20px; /* Espaçamento entre a imagem e o próximo elemento */
-    animation: fadeIn 1s ease-in; /* Animação de entrada */
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in;
 }
 
 .logo {
     max-width: 80%;
     height: auto;
-    transition: transform 0.2s; /* Transição para animação de hover */
+    transition: transform 0.2s;
 }
 
 .logo:hover {
-    transform: scale(1.01); /* Crescimento muito sutil da logo ao passar o mouse */
+    transform: scale(1.01);
 }
 
 input[type="text"] {
@@ -86,13 +86,13 @@ input[type="text"] {
     border-radius: 5px;
     font-size: 1em;
     color: #333;
-    transition: border-color 0.3s, box-shadow 0.3s; /* Transição de cor da borda */
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 input[type="text"]:focus {
-    border-color: #004494; /* Mudança de cor ao focar */
-    outline: none; /* Remove o contorno padrão */
-    box-shadow: 0 0 5px rgba(0, 85, 179, 0.3); /* Sombra ao focar */
+    border-color: #004494;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 85, 179, 0.3);
 }
 
 button {
@@ -104,26 +104,25 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.3s, transform 0.2s; /* Transições para fundo e transformação */
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
     background-color: #004494;
-    transform: scale(1.01); /* Crescimento muito sutil ao passar o mouse */
+    transform: scale(1.01);
 }
 
 .qr-code {
     display: block;
     margin: 20px auto;
-    animation: fadeIn 1s ease-in; /* Animação de entrada */
-    transition: transform 0.2s; /* Transição para animação de hover */
+    animation: fadeIn 1s ease-in;
+    transition: transform 0.2s;
 }
 
 .qr-code:hover {
-    transform: scale(1.01); /* Crescimento muito sutil do QR code ao passar o mouse */
+    transform: scale(1.01);
 }
 
-/* Animações personalizadas */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -134,7 +133,6 @@ button:hover {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Efeito de brilho */
 @keyframes glow {
     0% {
         text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff;
@@ -147,26 +145,24 @@ button:hover {
     }
 }
 
-/* Aplicando brilho aos textos */
 h1 {
-    animation: glow 1.5s infinite alternate; /* Brilho contínuo */
+    animation: glow 1.5s infinite alternate;
 }
 
 h2 {
-    animation: glow 2s infinite alternate; /* Brilho contínuo */
+    animation: glow 2s infinite alternate;
 }
 
-/* Parando animações em hover */
 .resultado:hover {
-    transform: scale(1.01); /* Crescimento muito sutil */
+    transform: scale(1.01);
 }
 
 .logo:hover {
-    transform: scale(1.01); /* Crescimento muito sutil */
+    transform: scale(1.01);
 }
 
 input[type="text"]:hover {
-    box-shadow: none; /* Remove o efeito de sombra em hover */
+    box-shadow: none;
 }
 
 button:hover {
