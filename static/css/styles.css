@@ -142,7 +142,6 @@ footer p {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Media Queries para dispositivos menores */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -178,7 +177,7 @@ footer p {
         max-width: 90%;
         margin-right: 0;
         margin-bottom: 1rem;
-        animation: moveUp 0.8s ease forwards; /* Adicionado animação na imagem da hero */
+        animation: moveUp 0.8s ease forwards;
     }
 
     .hero-text h2 {
