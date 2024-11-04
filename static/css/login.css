@@ -21,7 +21,7 @@ body {
 }
 
 h1 {
-    font-size: 2em; /* Título menor */
+    font-size: 2em;
     color: #3b82f6;
     margin: 0;
     text-align: center;
@@ -30,7 +30,7 @@ h1 {
     letter-spacing: 1px;
     padding: 10px 0;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    animation: shine 1.5s infinite; /* Adicionando animação ao título */
+    animation: shine 1.5s infinite;
 }
 
 @keyframes shine {
@@ -47,8 +47,8 @@ h1 {
 
 .container {
     width: 100%;
-    max-width: 500px; /* Aumentando a largura máxima */
-    min-height: 400px; /* Definindo uma altura mínima */
+    max-width: 500px;
+    min-height: 400px;
     padding: 30px;
     border-radius: 12px;
     background: #ffffff;
@@ -149,5 +149,5 @@ button[type="submit"]:hover {
 
 .container form input[type="text"],
 .container form input[type="password"] {
-    margin-bottom: 18px; /* Espaço adicional entre os campos */
+    margin-bottom: 18px;
 }
