@@ -1,20 +1,16 @@
-/* styles.css */
 
-/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body */
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to right, #e9ecef, #f8f9fa);
-    animation: backgroundAnimation 15s ease infinite; /* Animação de fundo */
+    animation: backgroundAnimation 15s ease infinite;
 }
 
-/* Animação de fundo */
 @keyframes backgroundAnimation {
     0% { background: linear-gradient(to right, #e9ecef, #f8f9fa); }
     25% { background: linear-gradient(to right, #f8f9fa, #e9ecef); }
@@ -23,7 +19,6 @@ body {
     100% { background: linear-gradient(to right, #e9ecef, #f8f9fa); }
 }
 
-/* Header */
 header {
     background-color: #007BFF;
     color: white;
@@ -34,7 +29,6 @@ header {
     border-bottom: 5px solid #0056b3;
 }
 
-/* Logout button */
 .logout {
     position: absolute;
     right: 20px;
@@ -45,7 +39,7 @@ header {
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    animation: fadeIn 1s ease; /* Animação de entrada */
+    animation: fadeIn 1s ease;
 }
 
 .logout:hover {
@@ -53,7 +47,6 @@ header {
     transform: scale(1.05);
 }
 
-/* Container */
 .container {
     max-width: 500px;
     margin: 20px auto;
@@ -63,11 +56,10 @@ header {
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease;
-    opacity: 0; /* Inicialmente invisível */
-    animation: slideIn 1s forwards; /* Animação de entrada */
+    opacity: 0;
+    animation: slideIn 1s forwards;
 }
 
-/* Animação de slideIn */
 @keyframes slideIn {
     from {
         transform: translateY(-20px);
@@ -83,14 +75,12 @@ header {
     transform: translateY(-5px);
 }
 
-/* Logo */
 .logo {
     max-width: 150px;
     margin: 20px 0;
-    animation: bounce 1.5s infinite; /* Animação de pulsar */
+    animation: bounce 1.5s infinite;
 }
 
-/* Animação de bounce */
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
@@ -103,16 +93,14 @@ header {
     }
 }
 
-/* Title */
 h1 {
     margin: 0;
     font-size: 24px;
     letter-spacing: 1px;
     color: #ffffff;
-    animation: textGlow 1s ease-in-out infinite alternate; /* Animação de brilho */
+    animation: textGlow 1s ease-in-out infinite alternate;
 }
 
-/* Animação de textGlow */
 @keyframes textGlow {
     0% {
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
@@ -122,15 +110,13 @@ h1 {
     }
 }
 
-/* Paragraph */
 p {
     font-size: 18px;
     margin-bottom: 15px;
     color: #000000;
-    animation: fadeInUp 0.5s ease-in-out; /* Animação de subida */
+    animation: fadeInUp 0.5s ease-in-out;
 }
 
-/* Animação de fadeInUp */
 @keyframes fadeInUp {
     from {
         transform: translateY(10px);
@@ -142,7 +128,6 @@ p {
     }
 }
 
-/* Form */
 form {
     margin-top: 20px;
     display: flex;
@@ -150,7 +135,6 @@ form {
     align-items: center;
 }
 
-/* Labels */
 label {
     display: block;
     font-weight: bold;
@@ -158,10 +142,9 @@ label {
     width: 100%;
     text-align: left;
     margin-bottom: 5px;
-    animation: fadeIn 0.5s ease; /* Animação de entrada */
+    animation: fadeIn 0.5s ease;
 }
 
-/* Inputs and Selects */
 input, select {
     width: 100%;
     max-width: 450px;
@@ -170,16 +153,15 @@ input, select {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    transition: border-color 0.3s ease, transform 0.3s ease; /* Adiciona transição suave */
+    transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
 input:focus, select:focus {
     border-color: #007BFF;
     outline: none;
-    animation: focusEffect 0.3s ease; /* Efeito de foco */
+    animation: focusEffect 0.3s ease;
 }
 
-/* Efeito de foco */
 @keyframes focusEffect {
     from {
         box-shadow: 0 0 0 rgba(0, 123, 255, 0);
@@ -189,7 +171,6 @@ input:focus, select:focus {
     }
 }
 
-/* Buttons */
 button {
     background-color: #007BFF;
     color: white;
@@ -201,10 +182,9 @@ button {
     transition: background-color 0.3s ease, transform 0.3s ease;
     width: 100%;
     max-width: 450px;
-    animation: popIn 0.5s ease; /* Animação de entrada */
+    animation: popIn 0.5s ease;
 }
 
-/* Animação de popIn */
 @keyframes popIn {
     from {
         transform: scale(0.9);
@@ -221,7 +201,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Result Area */
 .resultado {
     padding: 10px;
     border: 1px solid #007BFF;
@@ -232,10 +211,9 @@ button:hover {
     text-align: center;
     max-width: 450px;
     margin: 0 auto;
-    animation: fadeIn 0.5s ease; /* Animação de entrada */
+    animation: fadeIn 0.5s ease;
 }
 
-/* Animação de fadeIn */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -245,7 +223,6 @@ button:hover {
     }
 }
 
-/* Image Placeholder */
 .image-placeholder {
     height: 150px;
     background-color: #e0e0e0;
@@ -256,19 +233,17 @@ button:hover {
     color: #666;
     border-radius: 5px;
     margin-top: 15px;
-    animation: fadeIn 1s ease; /* Animação de entrada */
+    animation: fadeIn 1s ease;
 }
 
-/* Footer */
 .footer {
     text-align: center;
     margin-top: 20px;
     font-size: 12px;
     color: #666;
-    animation: fadeIn 1s ease; /* Animação de entrada */
+    animation: fadeIn 1s ease;
 }
 
-/* Media Queries */
 @media (max-width: 600px) {
     .container {
         padding: 15px;
@@ -283,7 +258,6 @@ button:hover {
     }
 }
 
-/* Extra Styles for Elements */
 input, select {
     border: 1px solid #ccc;
     transition: all 0.3s ease;
@@ -293,18 +267,15 @@ input:hover, select:hover {
     border-color: #007BFF;
 }
 
-/* Button Effects */
 button:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Adding additional animations for inputs */
 input {
-    animation: shake 0.5s ease; /* Animação de tremor */
+    animation: shake 0.5s ease;
 }
 
-/* Animação de shake */
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
@@ -313,7 +284,6 @@ input {
     100% { transform: translateX(0); }
 }
 
-/* Animated Background for Buttons */
 button {
     background-color: #007BFF;
     color: white;
@@ -325,10 +295,9 @@ button {
     transition: background-color 0.3s ease, transform 0.3s ease, background 0.5s ease;
     width: 100%;
     max-width: 450px;
-    animation: popIn 0.5s ease; /* Animação de entrada */
+    animation: popIn 0.5s ease;
 }
 
-/* Animação de popIn */
 @keyframes popIn {
     from {
         transform: scale(0.9);
@@ -345,7 +314,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Result Area */
 .resultado {
     padding: 10px;
     border: 1px solid #007BFF;
@@ -356,10 +324,9 @@ button:hover {
     text-align: center;
     max-width: 450px;
     margin: 0 auto;
-    animation: fadeIn 0.5s ease; /* Animação de entrada */
+    animation: fadeIn 0.5s ease;
 }
 
-/* Animação de fadeIn */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -369,7 +336,6 @@ button:hover {
     }
 }
 
-/* Image Placeholder */
 .image-placeholder {
     height: 150px;
     background-color: #e0e0e0;
@@ -380,19 +346,17 @@ button:hover {
     color: #666;
     border-radius: 5px;
     margin-top: 15px;
-    animation: fadeIn 1s ease; /* Animação de entrada */
+    animation: fadeIn 1s ease;
 }
 
-/* Footer */
 .footer {
     text-align: center;
     margin-top: 20px;
     font-size: 12px;
     color: #666;
-    animation: fadeIn 1s ease; /* Animação de entrada */
+    animation: fadeIn 1s ease;
 }
 
-/* Media Queries */
 @media (max-width: 600px) {
     .container {
         padding: 15px;
@@ -407,7 +371,6 @@ button:hover {
     }
 }
 
-/* Extra Styles for Elements */
 input, select {
     border: 1px solid #ccc;
     transition: all 0.3s ease;
@@ -417,18 +380,15 @@ input:hover, select:hover {
     border-color: #007BFF;
 }
 
-/* Button Effects */
 button:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Adding additional animations for inputs */
 input {
-    animation: shake 0.5s ease; /* Animação de tremor */
+    animation: shake 0.5s ease;
 }
 
-/* Animação de shake */
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
@@ -437,12 +397,10 @@ input {
     100% { transform: translateX(0); }
 }
 
-/* Pulsating Effect for Header */
 header {
-    animation: pulse 2s infinite; /* Animação de pulsação */
+    animation: pulse 2s infinite;
 }
 
-/* Animação de pulsação */
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
@@ -454,7 +412,6 @@ header {
     }
 }
 
-/* Scale Effect on Hover for Links */
 a {
     color: #007BFF;
     text-decoration: none;
@@ -465,7 +422,6 @@ a:hover {
     transform: scale(1.1);
 }
 
-/* Tooltip Styles */
 .tooltip {
     position: relative;
     display: inline-block;
@@ -481,9 +437,9 @@ a:hover {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: 125%; /* Position the tooltip above the text */
+    bottom: 125%;
     left: 50%;
-    margin-left: -60px; /* Center the tooltip */
+    margin-left: -60px;
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -493,23 +449,19 @@ a:hover {
     opacity: 1;
 }
 
-/* Shadow Effect on Container */
 .container {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Glowing Effect for Inputs */
 input:focus {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Rotate Animation for Icons */
 .icon {
     display: inline-block;
     animation: rotate 2s infinite linear;
 }
 
-/* Animação de rotação */
 @keyframes rotate {
     from {
         transform: rotate(0deg);
@@ -519,7 +471,6 @@ input:focus {
     }
 }
 
-/* Card Styles */
 .card {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -534,7 +485,6 @@ input:focus {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Flexbox for Layout */
 .flex-container {
     display: flex;
     justify-content: space-around;
@@ -542,7 +492,7 @@ input:focus {
 }
 
 .flex-item {
-    flex: 1 1 30%; /* Flex item */
+    flex: 1 1 30%;
     margin: 10px;
     background-color: #e9ecef;
     padding: 20px;
@@ -555,13 +505,12 @@ input:focus {
     transform: translateY(-5px);
 }
 
-/* Alert Styles */
 .alert {
     padding: 15px;
     border: 1px solid transparent;
     border-radius: 5px;
     margin-bottom: 20px;
-    animation: fadeIn 0.5s ease; /* Animação de entrada */
+    animation: fadeIn 0.5s ease;
 }
 
 .alert-success {
@@ -576,15 +525,13 @@ input:focus {
     border-color: #f5c6cb;
 }
 
-/* Animations for Images */
 img {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
-    animation: fadeIn 1s ease; /* Animação de entrada */
+    animation: fadeIn 1s ease;
 }
 
-/* Navbar Links */
 .navbar {
     display: flex;
     justify-content: space-around;
@@ -603,10 +550,9 @@ img {
     background: #007BFF;
     bottom: -5px;
     left: 0;
-    animation: slide 0.3s forwards; /* Animação de deslizar */
+    animation: slide 0.3s forwards;
 }
 
-/* Animação de deslizar */
 @keyframes slide {
     from {
         transform: scaleX(0);

@@ -5,7 +5,7 @@ import pickle
 import os
 
 app = Flask(__name__)
-app.secret_key = 'Combustex_posto'  # Chave secreta para assinar cookies de sessão
+app.secret_key = 'Combustex_posto'
 
 USUARIOS_FILE = 'usuarios.pkl'
 
@@ -43,7 +43,7 @@ def login():
         senha = request.form.get('senha')
 
         if usuarios.get(usuario) == senha:
-            session['usuario'] = usuario  # Armazenar o usuário na sessão
+            session['usuario'] = usuario 
             return redirect(url_for('menucombustivel'))
         else:
             return render_template('login.html', erro="Credenciais inválidas. Tente novamente.")
@@ -69,7 +69,7 @@ def index():
 
 @app.route('/menucombustivel')
 def menucombustivel():
-    if 'usuario' not in session:  # Verifica se o usuário está logado
+    if 'usuario' not in session:
         return redirect(url_for('login'))
     return render_template('menucombustivel.html')
 
@@ -123,7 +123,7 @@ def abastecer():
 
 @app.route('/logout')
 def logout():
-    session.pop('usuario', None)  # Remove o usuário da sessão
+    session.pop('usuario', None)
     return render_template('logout.html')
 
 if __name__ == '__main__':

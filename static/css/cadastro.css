@@ -45,8 +45,8 @@ h1 {
 
 .container {
     width: 100%;
-    max-width: 500px; /* Aumentando a largura máxima */
-    min-height: 400px; /* Definindo uma altura mínima */
+    max-width: 500px;
+    min-height: 400px;
     padding: 30px;
     border-radius: 12px;
     background: #ffffff;
@@ -98,7 +98,7 @@ button[type="submit"] {
     cursor: pointer;
     transition: background 0.3s, transform 0.2s ease-in-out, box-shadow 0.3s;
     box-shadow: 0 4px 10px rgba(32, 178, 170, 0.3);
-    animation: pulsate 1.5s infinite; /* Adiciona a animação de pulsação */
+    animation: pulsate 1.5s infinite;
 }
 
 button[type="submit"]:hover {
