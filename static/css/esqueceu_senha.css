@@ -16,15 +16,15 @@ body {
 
 header h1 {
     font-size: 2em;
-    color: #4B9CD3; /* Cor do título atualizada */
+    color: #4B9CD3;
     margin-bottom: 20px;
     text-align: center;
 }
 
 .container {
     width: 100%;
-    max-width: 500px; /* Aumentando a largura máxima */
-    min-height: 400px; /* Definindo uma altura mínima */
+    max-width: 500px;
+    min-height: 400px;
     padding: 30px;
     border-radius: 12px;
     background: #ffffff;
@@ -38,18 +38,17 @@ header h1 {
 }
 
 h1 {
-    font-size: 2em; /* Tamanho do título reduzido */
-    color: #4B9CD3; /* Cor do título atualizada */
+    font-size: 2em;
+    color: #4B9CD3;
     margin: 0;
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 10px 0;
-    animation: shine 2s infinite; /* Adiciona a animação de brilho ao título */
+    animation: shine 2s infinite;
 }
 
-/* Animação de brilho para o título */
 @keyframes shine {
     0% {
         text-shadow: 0 0 3px rgba(75, 156, 211, 0.5), 0 0 5px rgba(75, 156, 211, 0.3), 0 0 10px rgba(75, 156, 211, 0.2);
@@ -64,7 +63,7 @@ h1 {
 
 .container label {
     font-weight: bold;
-    color: #4B9CD3; /* Cor dos rótulos atualizada */
+    color: #4B9CD3;
     display: block;
     margin-top: 15px;
 }
@@ -82,7 +81,7 @@ h1 {
 
 .container input[type="text"]:focus,
 .container input[type="password"]:focus {
-    border-color: #4B9CD3; /* Cor da borda atualizada */
+    border-color: #4B9CD3;
     outline: none;
     box-shadow: 0 0 5px rgba(75, 156, 211, 0.2);
 }
@@ -103,7 +102,7 @@ button[type="submit"] {
     margin-top: 25px;
     padding: 12px;
     width: 100%;
-    background-color: #4B9CD3; /* Cor do botão */
+    background-color: #4B9CD3;
     border: none;
     border-radius: 6px;
     color: white;
@@ -116,7 +115,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #3a8bb8; /* Cor do botão ao passar o mouse */
+    background-color: #3a8bb8;
     transform: scale(1.05);
 }
 
@@ -130,11 +129,11 @@ button[type="submit"]:hover {
 .container p {
     margin-top: 15px;
     font-size: 0.9em;
-    color: #555; /* Mantive essa cor como um cinza mais neutro */
+    color: #555;
 }
 
 .container p a {
-    color: #4B9CD3; /* Cor dos links atualizada */
+    color: #4B9CD3;
     text-decoration: none;
     font-weight: bold;
 }
