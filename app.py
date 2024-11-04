@@ -8,7 +8,6 @@ import os
 app = Flask(__name__)
 app.secret_key = 'Combustex_posto'
 app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SESSION_COOKIE_NAME'] = 'session'
 Session(app)
 
 USUARIOS_FILE = 'usuarios.pkl'
