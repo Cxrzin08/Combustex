@@ -1,14 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from flask_session import Session
 from combustiveis.gasolina_adtivada import GasolinaAditivada
 import pyqrcode
 import pickle
 import os
 
 app = Flask(__name__)
-app.secret_key = 'Combustex_posto'
-app.config['SESSION_TYPE'] = 'filesystem'
-Session(app)
+app.secret_key = 'Combustex_posto'  # Chave secreta para assinar cookies de sessão
 
 USUARIOS_FILE = 'usuarios.pkl'
 
@@ -23,7 +20,6 @@ def save_usuarios(usuarios):
         pickle.dump(usuarios, file)
 
 usuarios = load_usuarios()
-
 gasolina_aditivada = GasolinaAditivada()
 
 @app.route('/cadastro', methods=['GET', 'POST'])
@@ -47,7 +43,7 @@ def login():
         senha = request.form.get('senha')
 
         if usuarios.get(usuario) == senha:
-            session['usuario'] = usuario
+            session['usuario'] = usuario  # Armazenar o usuário na sessão
             return redirect(url_for('menucombustivel'))
         else:
             return render_template('login.html', erro="Credenciais inválidas. Tente novamente.")
@@ -73,7 +69,7 @@ def index():
 
 @app.route('/menucombustivel')
 def menucombustivel():
-    if 'usuario' not in session:
+    if 'usuario' not in session:  # Verifica se o usuário está logado
         return redirect(url_for('login'))
     return render_template('menucombustivel.html')
 
@@ -127,7 +123,7 @@ def abastecer():
 
 @app.route('/logout')
 def logout():
-    session.pop('usuario', None)
+    session.pop('usuario', None)  # Remove o usuário da sessão
     return render_template('logout.html')
 
 if __name__ == '__main__':
