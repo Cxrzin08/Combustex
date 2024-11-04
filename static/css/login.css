@@ -109,7 +109,7 @@ button[type="submit"] {
     cursor: pointer;
     transition: background 0.3s, transform 0.2s ease-in-out;
     box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
-    animation: pulse 1.5s infinite; /* Adicionando a animação de pulsação */
+    animation: pulse 1.5s infinite;
 }
 
 button[type="submit"]:hover {
